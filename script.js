@@ -27,6 +27,10 @@ const adv = document.querySelector(".adv");
 body.removeChild(adv);
 
 //№5
+const PREFACE = "Предисловие";
+const INTRODUCTION = "Введение";
+const CHAPTER = "Глава";
+const APPENDIX = "Приложение";
 
 function selectUnsortedList(unsortedChapter) {
   const allBooks = document.querySelectorAll(".book");
@@ -44,10 +48,10 @@ function selectUnsortedList(unsortedChapter) {
 
 function intro(li, array, unsortedBook) {
   li.forEach((element) => {
-    if (element.innerText == "Введение") {
+    if (element.innerText === INTRODUCTION) {
       array.push(element.innerText);
     }
-    if (element.innerText == "Предисловие") {
+    if (element.innerText === PREFACE) {
       array.push(element.innerText);
     }
   });
@@ -57,7 +61,7 @@ function intro(li, array, unsortedBook) {
 function chapters(li, array, unsortedBook) {
   const unsortedArray = [];
   li.forEach((element) => {
-    if (element.innerText.includes("Глава")) {
+    if (element.innerText.includes(CHAPTER)) {
       unsortedArray.push(element.innerText);
     }
   });
@@ -71,7 +75,7 @@ function chapters(li, array, unsortedBook) {
 function upd(li, array, unsortedBook) {
   const unsortedArray = [];
   li.forEach((element) => {
-    if (element.innerText.includes("Приложение")) {
+    if (element.innerText.includes(APPENDIX)) {
       unsortedArray.push(element.innerText);
     }
   });
@@ -102,10 +106,10 @@ function insertLastChapter(book, chapterName) {
   let lastChapter = document.createElement("li");
   lastChapter.innerText = chapterName;
   liArray.forEach((element) => {
-    if (element.innerText.includes('Приложение')) {
-      element.insertAdjacentElement('beforebegin',lastChapter);
+    if (element.innerText.includes(APPENDIX)) {
+      element.insertAdjacentElement("beforebegin", lastChapter);
     }
   });
 }
 
-insertLastChapter(book6, 'Глава 8: За пределами ES6');
+insertLastChapter(book6, "Глава 8: За пределами ES6");
